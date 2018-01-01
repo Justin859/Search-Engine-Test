@@ -11,6 +11,8 @@ import hello.views
 
 urlpatterns = [
     url(r'^$', hello.views.index, name='index'),
+    url(r'^search/', include('haystack.urls')),
+    url(r'search/autocomplete/', hello.views.autocomplete, name='autocomplete'),
     url(r'^db', hello.views.db, name='db'),
     url(r'^admin/', include(admin.site.urls)),
 ]
