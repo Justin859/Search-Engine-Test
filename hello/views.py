@@ -4,6 +4,7 @@ import django_excel as excel
 from django.shortcuts import render
 from django.http import HttpResponse
 from haystack.query import SearchQuerySet
+from django.contrib import messages
 from django.db import transaction
 
 from .forms import *
@@ -42,7 +43,7 @@ def import_data(request):
             notes = request.FILES['file'].get_array()[1:]
             with transaction.atomic():
                 for note in notes:
-                    note_added = Note.objects.create(user=note[0], title=note[1], body=note[2])
+                    note_added = Note.objects.create(user=note[0].strip(), title=note[1].strip(), body=note[2])
                     note_added.save()
             messages.success(request, "Successfull Upload !")
             return HttpResponseRedirect('/upload-notes/')
