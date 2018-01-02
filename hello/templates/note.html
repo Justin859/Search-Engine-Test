@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'assets/css/search.css' %}">
+{% endblock %}
+
+{% block content %}
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-6 offset-md-3">
+            <div class="search-wrapper">
+                <form method="get" action="/search/" class="autocomplete-me">
+                    <div class="input-group">
+                        <input name="q" id="id_q" type="search" class="form-control" placeholder="Search for..." autocomplete="off">
+                        <span class="input-group-btn">
+                            <button type="submit" value="Search" id="submit-button" class="btn btn-secondary" type="button">Go!</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="outside-form">
+        <div class="row">
+            <div class="col-12 col-md-6 offset-md-3">
+                <h3 class="blockquote">
+                    {{note.title}}
+                </h3>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-12 col-md-6 offset-md-3">
+                <blockquote class="blockquote">
+                    <p>{{note.body}}</p>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script src="{% static 'assets/js/search_query.js' %}"></script>
+
+{% endblock %}

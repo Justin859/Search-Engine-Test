@@ -1,0 +1,35 @@
+body {
+    background-color: beige;
+}
+
+.blockquote {
+    background-color: #ffffff;
+}
+
+.ac-results {
+    position: absolute;
+    left: 0;
+    width: 89%;
+    margin-top: 38px;
+    z-index: 9;
+    background-color: #ffffff;
+    box-shadow: 2px 1px 2px #888888;
+    border-radius: 2px;
+    border: none;
+}
+
+.ac-results .result-wrapper a {
+    text-decoration: none !important;
+}
+.ac-results .result-wrapper  {
+    color: black;
+    padding-left: 13px;
+}
+
+.ac-results .result-wrapper:hover {
+    background-color: #f2f2f2; 
+}
+
+.ac-results .result-wrapper {
+    width: 100%;
+}

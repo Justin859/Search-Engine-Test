@@ -24,11 +24,17 @@ $(document).ready(function() {
   
           self.fetch(query)
         })
+
+        $('.outside-form').on('click', function() {
+          $('.ac-results').remove()
+        })
   
         // On selecting a result, populate the search field.
         this.form_elem.on('click', '.ac-result', function(ev) {
           self.query_box.val($(this).text())
           $('.ac-results').remove()
+          $( "#submit-button" ).trigger( "click" );
+          $( "#submit-button" ).prop( "disabled", true);
           return false
         })
       }

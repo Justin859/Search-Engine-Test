@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-8 offset-md-2">
+            {% for message in messages %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>Success</strong> {{message}}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <h1><span style="color: #1C4EC8">Upload Vouchers to Self Study Campus Database</span></h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <form action="" enctype="multipart/form-data"  method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="inputFile"><span style="color: #EB944F">Voucher File</span></label>
+                    <input type="file" name="file" class="form-control form-control-file" id="inputFile" aria-describedby="fileHelp" required>
+                    <small id="fileHelp" class="form-text text-muted">Make sure that the file type is .xls, .xlsx, .csv or .ods</small>
+                    {% if form.file.errors %}
+                    {% for error in form.file.errors %}
+                    <div class="form-control-feedback text-danger">{{error | escape}}</div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+                <hr />
+                <input type="submit" class="btn btn-primary float-right" value="Upload">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,10 +1,13 @@
 import simplejson as json
+import django_excel as excel
 
 from django.shortcuts import render
 from django.http import HttpResponse
 from haystack.query import SearchQuerySet
+from django.db import transaction
 
-from .models import Greeting
+from .forms import *
+from .models import *
 
 # Create your views here.
 def index(request):
@@ -12,14 +15,11 @@ def index(request):
     return render(request, 'index.html')
 
 
-def db(request):
+def find_note(request, pk, title):
 
-    greeting = Greeting()
-    greeting.save()
+    note = Note.objects.get(pk=pk, title=title)
 
-    greetings = Greeting.objects.all()
-
-    return render(request, 'db.html', {'greetings': greetings})
+    return render(request, 'note.html', {'note': note})
 
 
 def autocomplete(request):
@@ -32,4 +32,26 @@ def autocomplete(request):
     })
 
     return HttpResponse(the_data, content_type='application/json')
+
+def import_data(request):
+
+    if request.method == "POST":
+        form = UploadFileForm(request.POST,
+                            request.FILES)
+        if form.is_valid():
+            notes = request.FILES['file'].get_array()[1:]
+            with transaction.atomic():
+                for note in notes:
+                    note_added = Note.objects.create(user=note[0], title=note[1], body=note[2])
+                    note_added.save()
+            messages.success(request, "Successfull Upload !")
+            return HttpResponseRedirect('/upload-notes/')
+    else:
+        form = UploadFileForm()
+    return render(
+        request,
+        'upload_form.html',
+        {
+            'form': form,
+        })
 

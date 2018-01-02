@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^$', hello.views.index, name='index'),
     url(r'^search/', include('haystack.urls')),
     url(r'search/autocomplete/', hello.views.autocomplete, name='autocomplete'),
-    url(r'^db', hello.views.db, name='db'),
+    url(r'note/(?P<pk>[0-9]+)/(?P<title>[A-Za-z\s:,0-9]+)/', hello.views.find_note, name='note'),
+    url(r'^upload-notes/$', hello.views.import_data, name='import data'),
     url(r'^admin/', include(admin.site.urls)),
 ]

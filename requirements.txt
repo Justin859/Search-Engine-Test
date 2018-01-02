@@ -7,3 +7,7 @@ django-haystack==2.6.1
 whoosh==2.7.4
 simplejson==3.13.2
 pytz==2017.2
+django-excel==0.0.9
+pyexcel-xls==0.5.5
+pyexcel-xlsx==0.5.5
+pyexcel-ods==0.5.2
