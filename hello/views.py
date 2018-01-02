@@ -2,7 +2,7 @@ import simplejson as json
 import django_excel as excel
 
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseBadRequest
 from haystack.query import SearchQuerySet
 from django.contrib import messages
 from django.db import transaction
