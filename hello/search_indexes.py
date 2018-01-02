@@ -5,6 +5,7 @@ from hello.models import Note
 
 class NoteIndex(indexes.SearchIndex, indexes.Indexable):
     text = indexes.CharField(document=True, use_template=True)
+    title = indexes.CharField(model_attr='title')
     author = indexes.CharField(model_attr='user')
     pub_date = indexes.DateTimeField(model_attr='pub_date')
     content_auto = indexes.EdgeNgramField(use_template=True)
