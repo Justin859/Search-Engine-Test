@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block styles %}
-<link rel="stylesheet" href="{% static 'assets/css/search.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/search.min.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -13,7 +13,7 @@
             <div class="search-wrapper">
                 <form method="get" action="/search/" class="autocomplete-me">
                     <div class="input-group">
-                        <input name="q" id="id_q" type="search" class="form-control" placeholder="Search for..." autocomplete="off">
+                        <input name="q" id="id_q" type="search" class="form-control" placeholder="Search for..." autocomplete="off" required>
                         <span class="input-group-btn">
                             <button type="submit" value="Search" id="submit-button" class="btn btn-secondary" type="button">Go!</button>
                         </span>
@@ -46,6 +46,6 @@
 
 {% block scripts %}
 
-<script src="{% static 'assets/js/search_query.js' %}"></script>
+<script src="{% static 'assets/js/search_query.min.js' %}"></script>
 
 {% endblock %}

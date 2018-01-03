@@ -1,20 +1,24 @@
 {% load staticfiles %}
 
 <!DOCTYPE html>
-<html>
-<head>
-<title>Python Getting Started on Heroku</title>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Python Getting Started on Heroku</title>
 </head>
 <body>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{% static 'vendor/bower_components/bootstrap/dist/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/bower_components/bootstrap/dist/css/bootstrap.min.css' %}">
     {% block styles %}{% endblock %}
-{% block content %}{% endblock %}
+    
+    {% block content %}{% endblock %}
 
-<script src="{% static 'vendor/bower_components/jquery/dist/jquery.min.js' %}"></script>
-<script src="{% static 'vendor/bower_components/tether/dist/js/tether.min.js' %}"></script>
-<script src="{% static 'vendor/bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'vendor/bower_components/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bower_components/tether/dist/js/tether.min.js' %}"></script>
+    <script src="{% static 'vendor/bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
 
-{% block scripts %}{% endblock %}
-</body>
+    {% block scripts %}{% endblock %}
+    </body>
 </html>
